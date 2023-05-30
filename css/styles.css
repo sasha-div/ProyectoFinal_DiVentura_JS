@@ -1,0 +1,108 @@
+html,
+body {
+    height: 100%;
+    background: linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%);
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-top {
+    background-color: #333;
+    color: aliceblue;
+    height: 5vh;
+    font-size: small;
+}
+
+.navbar {
+    background: linear-gradient(90deg, hsla(260, 28%, 53%, 1) 0%, hsla(170, 42%, 71%, 1) 100%);
+    height: 100%;
+    color: aliceblue;
+    font-weight: bolder;
+}
+
+.content {
+    flex: 1;
+}
+
+.index-categorias {
+    background-color: hsla(216, 41%, 79%, 1);
+    padding: 24rem 0rem 24rem 0rem;
+}
+
+.contenedor-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.circle {
+    width: 40%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.text {
+    font-size: 18px;
+    color: #333;
+}
+
+.index-novedades {
+    padding: 6rem 0rem 12rem 0rem;
+}
+
+.text-novedades {
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bolder;
+    padding-bottom: 3rem;
+
+}
+
+.btn-agregar {
+    display: flex;
+    justify-content: end;
+}
+
+.btn-vaciar {
+    display: flex;
+    justify-content: center;
+}
+
+.text-total {
+    text-align: start;
+}
+
+.imgCover {
+    width: 30%;
+}
+
+th {
+    text-align: center;
+}
+
+/* FOOTER */
+
+footer {
+    background: linear-gradient(90deg, hsla(260, 28%, 53%, 1) 0%, hsla(170, 42%, 71%, 1) 100%);
+    color: #333;
+    font-size: 14px;
+    padding: 20px;
+    height: auto;
+}
+
+footer .footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+}
