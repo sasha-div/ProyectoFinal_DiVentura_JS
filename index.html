@@ -17,7 +17,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Videojuegos</title>
+    <title>Inicio</title>
 </head>
 
 <body>
@@ -25,20 +25,24 @@
         <div class="container-fluid alto">
             <div class="header-top row align-items-center">
                 <div class="col col-lg">
-                    Síguenos en <span><img src="" alt="">1</span><span><img src="" alt="">2</span><span><img src=""
-                            alt="">3</span>
+                    Síguenos en <a href="https://www.instagram.com/" target="_blank"><i
+                            class="rrss fa-brands fa-instagram fa-beat-fade" style="color: #00ffff;"></i></a><a
+                        href="https://es-la.facebook.com/" target="_blank"><i
+                            class="rrss fa-brands fa-facebook-f fa-beat-fade" style="color: #00ffff;"></i></a><a
+                        href="https://twitter.com/" target="_blank"><i class="rrss fa-brands fa-twitter fa-beat-fade"
+                            style="color: #00ffff;"></i></a>
                 </div>
-                <div class="col-md-auto">
+                <div id="register-btn" class="col-md-auto">
                     Regístrate
                 </div>
-                <div class="col col-md-auto">
+                <div id="account-btn" class="col col-md-auto">
                     Mi cuenta
                 </div>
             </div>
         </div>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="index.html">
                     <img src="img/icon-logo.webp" alt="Logo" width="40" height="34"
                         class="d-inline-block align-text-top"></a>
 
@@ -54,6 +58,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="/pages/videojuegos.html">Videojuegos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/pages/conocenos.html">¡Conócenos!</a>
                         </li>
                     </ul>
                     <form class="d-flex" role="search" id="form-search">
@@ -74,10 +81,12 @@
     <main class="content">
         <div class="contenedor-circle">
             <div class="circle">
-                <span class="text">Ve nuestro catálogo</span>
+                <a href="/pages/videojuegos.html"><button type="button" class="btn btn-dark btn-lg">Ve nuestro
+                        catálogo</button></a>
             </div>
             <div class="circle">
-                <span class="text">¡Conócenos!</span>
+                <a href="/pages/conocenos.html"><button type="button"
+                        class="btn btn-dark btn-lg">¡Conócenos!</button></a>
             </div>
         </div>
 
@@ -108,8 +117,7 @@
         </div>
 
         <div>
-            <img src="https://i.ibb.co/2ynmnWT/Blue-and-Green-Modern-Adventurous-Game-Banner.webp" class="d-block w-100"
-                alt="banner-gameover">
+            <img src="https://i.ibb.co/Tc4dhk5/Thank-You-For-Playing.webp" class="d-block w-100" alt="banner-gameover">
         </div>
     </main>
 
@@ -122,6 +130,7 @@
     </footer>
 
     <!-- LINK DE SCRIPTS -->
+    <script src="https://kit.fontawesome.com/2179471218.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>

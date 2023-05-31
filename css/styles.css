@@ -10,11 +10,20 @@ body {
     flex-direction: column;
 }
 
+a {
+    text-decoration: none;
+    color: aliceblue;
+}
+
 .header-top {
     background-color: #333;
     color: aliceblue;
     height: 5vh;
     font-size: small;
+}
+
+.rrss {
+    padding: 0.3rem;
 }
 
 .navbar {
@@ -38,22 +47,23 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: lightblue;
 }
 
 .circle {
     width: 40%;
     aspect-ratio: 1/1;
     border-radius: 50%;
-    background-color: #f2f2f2;
+    background-image: url(https://i.ibb.co/bsHjPpV/Blue-Retro-8bit-Video-Game-Phone-Wallpaper.webp);
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 10px;
 }
 
-.text {
-    font-size: 18px;
-    color: #333;
+.inner-cirle {
+    border: none;
 }
 
 .index-novedades {
@@ -90,12 +100,44 @@ th {
     text-align: center;
 }
 
+
+
+/* PÁGINA VIDEOJUEGOS */
+
+.card {
+    height: 100%;
+}
+
+.card .card img {
+    object-fit: cover;
+    width: 260px;
+}
+
+.card-custom .card-wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100%;
+}
+
+.card-custom .card-wrapper .card-content {
+    padding: 1rem;
+}
+
+.card-custom .card-wrapper .card-actions {
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
 /* FOOTER */
 
 footer {
     background: linear-gradient(90deg, hsla(260, 28%, 53%, 1) 0%, hsla(170, 42%, 71%, 1) 100%);
     color: #333;
     font-size: 14px;
+    font-weight: bolder;
     padding: 20px;
     height: auto;
 }
