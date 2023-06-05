@@ -33,6 +33,35 @@ a {
     font-weight: bolder;
 }
 
+.circle-background {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+}
+
+.circle-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.circle-background span {
+    background-color: purple;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    position: absolute;
+    top: 15px;
+    left: 97%;
+    padding: 3px 10px;
+    font-size: small;
+}
+
 .content {
     flex: 1;
 }
