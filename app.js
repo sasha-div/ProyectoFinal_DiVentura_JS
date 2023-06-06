@@ -4,10 +4,9 @@ let catalogo = []
 
 // Elementos que llamo del DOM
 const btnAnadir = document.getElementsByClassName("btn-primary") //Para añadir juegos al carrito
+const contador = document.getElementById("contador") //Para que el número del carrito vaya aumentando
 const totalCarrito = document.getElementById("total") //Para sacar el total del carro
 const btnVaciar = document.getElementById("btn-vaciar") //Para vaciar el carrito
-const seleccion = document.getElementById("selector") //Para 
-
 
 // Productos que creé y metí en el catálogo de mi tienda
 catalogo.push(new Articulos("https://i.ibb.co/ZSKJ2kX/product-001.webp", "Elden Ring", "PS4", 45000))
@@ -27,5 +26,16 @@ allEventListeners()
 
 function allEventListeners() {
     window.addEventListener("DOMContentLoaded", cargarJuegos)
+    btnAnadir.addEventListener("click", manejoSubmit)
+    btnVaciar.addEventListener("click", vaciar)
 }
 
+function cargarJuegos() {
+    catalogo = JSON.parse(localStorage.getItem("catalogo")) || [];
+    carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    llenarSelect();
+    actualizarCarrito();
+    if (!carrito.length) {
+        btnVaciar.setAttribute("disabled", true);
+    }
+}

@@ -1,3 +1,5 @@
+/* GENERAL  */
+
 html,
 body {
     height: 100%;
@@ -33,6 +35,12 @@ a {
     font-weight: bolder;
 }
 
+.content {
+    flex: 1;
+}
+
+/* INICIO */
+
 .circle-background {
     display: inline-block;
     width: 60px;
@@ -60,10 +68,6 @@ a {
     left: 97%;
     padding: 3px 10px;
     font-size: small;
-}
-
-.content {
-    flex: 1;
 }
 
 .index-categorias {
@@ -104,8 +108,9 @@ a {
     font-size: xx-large;
     font-weight: bolder;
     padding-bottom: 3rem;
-
 }
+
+/* CARRITO DE COMPRAS -OFFCANVAS- */
 
 .btn-agregar {
     display: flex;
@@ -114,7 +119,8 @@ a {
 
 .btn-vaciar {
     display: flex;
-    justify-content: center;
+    justify-content: start;
+    border-radius: 1%;
 }
 
 .text-total {
@@ -128,8 +134,6 @@ a {
 th {
     text-align: center;
 }
-
-
 
 /* PÁGINA VIDEOJUEGOS */
 

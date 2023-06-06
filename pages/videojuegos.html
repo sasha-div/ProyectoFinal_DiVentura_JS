@@ -64,18 +64,17 @@
                         </li>
                     </ul>
                     <div class="d-flex align-items-center justify-content-end gap-2">
-                        <a href="#" role="button">
-                            <div class="circle-background">
-                                <img id="icon-favorite" class="navbar-icons" src="/img/icon-favorite.webp"
-                                    alt="icono-favoritos">
-                            </div>
-                        </a>
-                        <a href="#" role="button">
-                            <div class="circle-background">
+                        <div class="circle-background">
+                            <img id="icon-favorite" class="navbar-icons" src="/img/icon-favorite.webp"
+                                alt="icono-favoritos">
+                        </div>
+                        <div class="circle-background">
+                            <a class="" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                                aria-controls="offcanvasRight">
                                 <img id="icon-shoppingcart" class="navbar-icons" src="/img/icon-shoppingcart.webp"
-                                    alt="icono-carrito">
-                            </div>
-                        </a>
+                                    alt="icono-carrito"><span id="contador" class="cantidad-shop">0</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -208,6 +207,39 @@
 
         </div>
     </main>
+
+    <!-- START CARRITO DE COMPRAS -OFFCANVAS- -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">Carrito de compras</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th class="table-primary">Cover</th>
+                        <th class="table-primary">Nombre</th>
+                        <th class="table-primary">Plataforma</th>
+                        <th class="table-primary">Precio</th>
+                    </tr>
+                </thead>
+                <tbody id="tJuegos">
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="3" class="text-total">Total: </th>
+                        <th id="total"></th>
+                    </tr>
+                </tfoot>
+            </table>
+            <div class="btn-vaciar">
+                <button id="btn-vaciar" class="btn-vaciar btn btn-danger">Vaciar carrito</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- END CARRITO DE COMPRAS -OFFCANVAS- -->
 
     <footer>
         <div class="footer-container">
