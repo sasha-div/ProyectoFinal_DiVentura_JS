@@ -2,6 +2,13 @@
 let carrito = []
 let catalogo = []
 
+// fetch("./catalogo.json")
+//     .then(response => response.json())
+//     .then(data => {
+//         catalogo = data
+//         cargarJuegos(catalogo)
+//     })
+
 // ELEMENTOS DEL DOM
 const carritoJuegos = document.getElementById("cJuegos") //tablebody
 const listaJuegos = document.querySelector("#listaJuegos"); //catálogo de juegos
