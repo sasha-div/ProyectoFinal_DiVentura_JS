@@ -17,6 +17,10 @@ a {
     color: aliceblue;
 }
 
+.disabled {
+    display: none;
+}
+
 .header-top {
     background-color: #333;
     color: aliceblue;
@@ -117,6 +121,14 @@ a {
     justify-content: end;
 }
 
+.btn-eliminar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    padding-top: 0px;
+}
+
 .btn-vaciar {
     display: flex;
     justify-content: start;
@@ -136,7 +148,6 @@ th {
 }
 
 /* PÁGINA VIDEOJUEGOS */
-
 .card {
     height: 100%;
 }

@@ -16,6 +16,7 @@
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="../css/styles.css">
     <title>Videojuegos</title>
 </head>
@@ -84,129 +85,13 @@
     <img src="https://i.ibb.co/Pwy2v2K/Black-Blue-Simple-Gaming-Banner-Landscape.webp" alt="Banner-VideoJuegos">
 
     <main class="container content mt-5">
-        <div class="row mb-3">
-            <div class="col-md-3 mb-3">
-                <div class="card card-custom">
-                    <div class="card-wrapper">
-                        <img src="https://i.ibb.co/ZSKJ2kX/product-001.webp" class="img-fluid rounded" alt="...">
-                        <div class="card-content">
-                            <h2 class="card-title">Elden Ring</h2>
-                            <p class="card-text">$60.000</p>
-                        </div>
-                        <div class="card-actions">
-                            <button class="btn btn-primary">Añadir al carrito</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div id="listaJuegos" class="row mb-3">
 
-            <div class="col-md-3 mb-3">
-                <div class="card card-custom">
-                    <div class="card-wrapper">
-                        <img src="https://i.ibb.co/9VPmHvf/product-002.webp" class="img-fluid rounded" alt="...">
-                        <div class="card-content">
-                            <h2 class="card-title">The Last Of Us: Part II</h2>
-                            <p class="card-text">$50.000</p>
-                        </div>
-                        <div class="card-actions">
-                            <button class="btn btn-primary">Añadir al carrito</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 mb-3">
-                <div class="card card-custom">
-                    <div class="card-wrapper">
-                        <img src="https://i.ibb.co/sPXZKPJ/product-003.webp" class="img-fluid rounded" alt="...">
-                        <div class="card-content">
-                            <h2 class="card-title">Horizon: Forbidden West</h2>
-                            <p class="card-text">$50.000</p>
-                        </div>
-                        <div class="card-actions">
-                            <button class="btn btn-primary">Añadir al carrito</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 mb-3">
-                <div class="card card-custom">
-                    <div class="card-wrapper">
-                        <img src="https://i.ibb.co/zJq5jtb/product-004.webp" class="img-fluid rounded" alt="...">
-                        <div class="card-content">
-                            <h2 class="card-title">Zelda: BOTW</h2>
-                            <p class="card-text">$50.000</p>
-                        </div>
-                        <div class="card-actions">
-                            <button class="btn btn-primary">Añadir al carrito</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 mb-3">
-                <div class="card card-custom">
-                    <div class="card-wrapper">
-                        <img src="https://i.ibb.co/L0ZpLMV/product-005.webp" class="img-fluid rounded" alt="...">
-                        <div class="card-body">
-                            <h2 class="card-title">Mario Kart 8</h2>
-                            <p class="card-text">$50.000</p>
-                        </div>
-                        <div class="card-actions">
-                            <button class="btn btn-primary">Añadir al carrito</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 mb-3">
-                <div class="card card-custom">
-                    <div class="card-wrapper">
-                        <img src="https://i.ibb.co/gMV3wYY/product-006.webp" class="img-fluid rounded" alt="...">
-                        <div class="card-body">
-                            <h2 class="card-title">Tomb Raider: The Definitive Edition</h2>
-                            <p class="card-text">$50.000</p>
-                        </div>
-                        <div class="card-actions">
-                            <button class="btn btn-primary">Añadir al carrito</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 mb-3">
-                <div class="card card-custom">
-                    <div class="card-wrapper">
-                        <img src="https://i.ibb.co/WBJfNjD/product-007.webp" class="img-fluid rounded" alt="...">
-                        <div class="card-body">
-                            <h2 class="card-title">It Takes Two</h2>
-                            <p class="card-text">$50.000</p>
-                        </div>
-                        <div class="card-actions">
-                            <button class="btn btn-primary">Añadir al carrito</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 mb-3">
-                <div class="card card-custom">
-                    <div class="card-wrapper">
-                        <img src="https://i.ibb.co/FVmhDPY/product-008.webp" class="img-fluid rounded" alt="...">
-                        <div class="card-body">
-                            <h2 class="card-title">The Elder Scrolls V: Skyrim</h2>
-                            <p class="card-text">$50.000</p>
-                        </div>
-                        <div class="card-actions">
-                            <button class="btn btn-primary">Añadir al carrito</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- PRODUCTOS DE MI CATÁLOGO -->
 
         </div>
     </main>
+
 
     <!-- START CARRITO DE COMPRAS -OFFCANVAS- -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
@@ -222,9 +107,11 @@
                         <th class="table-primary">Nombre</th>
                         <th class="table-primary">Plataforma</th>
                         <th class="table-primary">Precio</th>
-                    </tr>
                 </thead>
-                <tbody id="tJuegos">
+                <tbody id="cJuegos">
+
+                    <!-- PRODUCTOS DE MI CARRITO -->
+
                 </tbody>
                 <tfoot>
                     <tr>
@@ -234,7 +121,7 @@
                 </tfoot>
             </table>
             <div class="btn-vaciar">
-                <button id="btn-vaciar" class="btn-vaciar btn btn-danger">Vaciar carrito</button>
+                <button id="btnVaciar" class="btn-vaciar btn btn-danger">Vaciar carrito</button>
             </div>
         </div>
     </div>
@@ -250,13 +137,14 @@
     </footer>
 
     <!-- LINK DE SCRIPTS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://kit.fontawesome.com/2179471218.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
-    <script src="/models/Articulos.js"></script>
-    <script src="/models/Carrito.js"></script>
-    <script src="/app.js"></script>
+    <script src="../models/Articulos.js"></script>
+    <script src="../models/ArticulosCarrito.js"></script>
+    <script src="../app.js"></script>
 </body>
 
 </html>

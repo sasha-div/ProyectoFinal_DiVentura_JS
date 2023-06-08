@@ -1,41 +1,179 @@
-// Variables vacías para almacenar los juegos del carrito del usuario y de mi catálogo
+// VARIABLES VACÍAS
 let carrito = []
 let catalogo = []
 
-// Elementos que llamo del DOM
-const btnAnadir = document.getElementsByClassName("btn-primary") //Para añadir juegos al carrito
-const contador = document.getElementById("contador") //Para que el número del carrito vaya aumentando
-const totalCarrito = document.getElementById("total") //Para sacar el total del carro
-const btnVaciar = document.getElementById("btn-vaciar") //Para vaciar el carrito
+// ELEMENTOS DEL DOM
+const carritoJuegos = document.getElementById("cJuegos") //tablebody
+const listaJuegos = document.querySelector("#listaJuegos"); //catálogo de juegos
+const contador = document.querySelector("#contador") //contador
+let btnsAgregar = document.querySelectorAll(".articulo-agregar") //agregar al carrito
+const btnVaciar = document.querySelector("#btnVaciar") //vaciar el carrito
+const totalCarrito = document.querySelector("#total") //total del carro
 
-// Productos que creé y metí en el catálogo de mi tienda
-catalogo.push(new Articulos("https://i.ibb.co/ZSKJ2kX/product-001.webp", "Elden Ring", "PS4", 45000))
-catalogo.push(new Articulos("https://i.ibb.co/9VPmHvf/product-002.webp", "The Last of Us: Part II", "PS4", 40000))
-catalogo.push(new Articulos("https://i.ibb.co/sPXZKPJ/product-003.webp", "Horizon: Forbidden West", "PS4", 45000))
-catalogo.push(new Articulos("https://i.ibb.co/zJq5jtb/product-004.webp", "Zelda: Breath of The Wild", "Switch", 45000))
-catalogo.push(new Articulos("https://i.ibb.co/L0ZpLMV/product-005.webp", "Mario Kart 8", "Switch", 35000))
-catalogo.push(new Articulos("https://i.ibb.co/gMV3wYY/product-006.webp", "Tomb Raider", "Xbox", 30000))
-catalogo.push(new Articulos("https://i.ibb.co/WBJfNjD/product-007.webp", "It Takes Two", "Xbox", 40000))
-catalogo.push(new Articulos("https://i.ibb.co/FVmhDPY/product-008.webp", "The Elder Scrolls V: Skyrim", "PS4", 35000))
+// PRODUCTOS EN CATÁLOGO
+catalogo.push(new Articulos("https://i.ibb.co/ZSKJ2kX/product-001.webp", "Elden Ring", "PS4", 45000, "Elden-01"))
+catalogo.push(new Articulos("https://i.ibb.co/9VPmHvf/product-002.webp", "The Last of Us: Part II", "PS4", 40000, "Last-02"))
+catalogo.push(new Articulos("https://i.ibb.co/sPXZKPJ/product-003.webp", "Horizon: Forbidden West", "PS4", 45000, "Horizon-03"))
+catalogo.push(new Articulos("https://i.ibb.co/zJq5jtb/product-004.webp", "Zelda: Breath of The Wild", "Switch", 45000, "Zelda-04"))
+catalogo.push(new Articulos("https://i.ibb.co/L0ZpLMV/product-005.webp", "Mario Kart 8", "Switch", 35000, "Mario-05"))
+catalogo.push(new Articulos("https://i.ibb.co/gMV3wYY/product-006.webp", "Tomb Raider", "Xbox", 30000, "Tomb-06"))
+catalogo.push(new Articulos("https://i.ibb.co/WBJfNjD/product-007.webp", "It Takes Two", "Xbox", 40000, "TakesTwo-07"))
+catalogo.push(new Articulos("https://i.ibb.co/FVmhDPY/product-008.webp", "The Elder Scrolls V: Skyrim", "PS4", 35000, "Skyrim-08"))
 
-// Con esta función guardo mi catálogo en el storage local del navegador
+// CATÁLOGO GURADADO EN LOCAL STORAGE
 localStorage.setItem("catalogo", JSON.stringify(catalogo))
 
-// Incluyo la función para asignar los eventos para cargar los juegos al inicio, agregar al carrito y vaciar al hacer clic
+// ASIGNANDO EVENTOS
 allEventListeners()
 
 function allEventListeners() {
     window.addEventListener("DOMContentLoaded", cargarJuegos)
-    btnAnadir.addEventListener("click", manejoSubmit)
+    window.addEventListener("DOMContentLoaded", actualizarContador)
+    window.addEventListener("DOMContentLoaded", mostrarAgregarAlCarrito)
     btnVaciar.addEventListener("click", vaciar)
 }
 
+// CARGANDO LOS ARTÍCULOS EN LA PÁGINA
 function cargarJuegos() {
-    catalogo = JSON.parse(localStorage.getItem("catalogo")) || [];
-    carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    llenarSelect();
-    actualizarCarrito();
-    if (!carrito.length) {
+    catalogo = JSON.parse(localStorage.getItem("catalogo")) || []
+    carrito = JSON.parse(localStorage.getItem("carrito")) || []
+    poblarlistaJuegos()
+    actualizarCarrito()
+}
+
+function poblarlistaJuegos() {
+    catalogo.forEach(articulos => {
+        const cardContainer = document.createElement("div")
+        cardContainer.classList.add("col-md-3", "mb-3")
+        cardContainer.innerHTML = `
+                <div class="card card-custom">
+                    <div class="card-wrapper">
+                        <img src= "${articulos.cover}" class="img-fluid rounded" alt="portada">
+                                <div class="card-content">
+                                    <h2 class="card-title">${articulos.nombre}</h2>
+                                    <p class="card-text">${articulos.precio}</p>
+                                </div>
+                            <div class="card-actions">
+                            <button id="${articulos.id}" class="articulo-agregar btn btn-primary">Añadir al carrito</button>
+                        </div>
+                    </div>
+                </div> `
+        listaJuegos.appendChild(cardContainer)
+    })
+
+    actualizarBtnsAgregar()
+}
+
+function actualizarCarrito() {
+    carritoJuegos.innerHTML = "";
+    totalCarrito.innerText = 0;
+    if (carrito.length === 0) {
         btnVaciar.setAttribute("disabled", true);
     }
+    carrito.forEach((juego) => {
+        mostrarAgregarAlCarrito(juego);
+    });
+}
+
+function vaciar() {
+    carrito = []
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+    actualizarCarrito()
+    actualizarContador()
+
+    Toastify({
+        text: "¡Has vaciado el carrito!",
+        duration: 2000,
+        close: false,
+        gravity: "top",
+        position: "center",
+        stopOnFocus: true,
+        style: {
+            background: "linear-gradient(90deg, hsla(260, 28%, 53%, 1) 0%, hsla(170, 42%, 71%, 1) 100%)",
+            borderRadius: "1rem",
+            textTransform: "uppercase",
+            fontSize: ".75rem"
+        },
+        offset: {
+            x: '1.5rem',
+            y: '1.5rem'
+        },
+        onClick: function () { }
+    }).showToast();
+}
+
+function mostrarAgregarAlCarrito() {
+    carrito.forEach(juego => {
+        const fila = document.createElement("tr")
+        // const posCarrito = carrito.indexOf(juego)
+        fila.innerHTML = `
+                    <td><img class="imgCover" src="${juego.cover}" alt="${juego.nombre}"></td>
+                    <td>${juego.nombre}</td>
+                    <td>${juego.plataforma}</td>
+                    <td>${juego.precio}</td>
+                    `
+        carritoJuegos.append(fila)
+    })
+    console.log(carrito)
+}
+
+function actualizarBtnsAgregar() {
+    btnsAgregar = document.querySelectorAll(".articulo-agregar")
+    btnsAgregar.forEach(boton => {
+        boton.addEventListener("click", agregarAlCarrito)
+    })
+}
+
+let carritoLS = localStorage.getItem("carrito")
+
+if (carritoLS) {
+    carrito = JSON.parse(carritoLS)
+    actualizarContador()
+} else {
+    carrito = [];
+}
+
+function agregarAlCarrito(e) {
+
+    Toastify({
+        text: "Agregado al carrito",
+        duration: 2000,
+        close: false,
+        gravity: "top",
+        position: "center",
+        stopOnFocus: true,
+        style: {
+            background: "linear-gradient(90deg, hsla(260, 28%, 53%, 1) 0%, hsla(170, 42%, 71%, 1) 100%)",
+            borderRadius: "1rem",
+            textTransform: "uppercase",
+            fontSize: ".75rem"
+        },
+        offset: {
+            x: '1.5rem',
+            y: '1.5rem'
+        },
+        onClick: function () { }
+    }).showToast();
+
+    e.preventDefault()
+    const idBtnsAgregar = e.currentTarget.id
+    const productoAgregado = catalogo.find(articulo => articulo.id === idBtnsAgregar)
+
+    if (carrito.some(articulo => articulo.id === idBtnsAgregar)) {
+        const indice = carrito.findIndex(articulo => articulo.id === idBtnsAgregar)
+        carrito[indice].cantidad++
+    } else {
+        productoAgregado.cantidad = 1
+        carrito.push(productoAgregado)
+    }
+
+    actualizarContador()
+    mostrarAgregarAlCarrito(productoAgregado)
+
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+}
+
+function actualizarContador() {
+    let numContador = carrito.reduce((acumulador, articulo) => acumulador + articulo.cantidad, 0)
+    contador.innerText = numContador
 }
