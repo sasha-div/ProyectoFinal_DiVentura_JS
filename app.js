@@ -48,6 +48,7 @@ function cargarJuegos() {
     actualizarCarrito()
 }
 
+// CREACIÓN DE CARDS PARA VIDEOJUEGOS
 function poblarlistaJuegos() {
     catalogo.forEach(articulos => {
         const cardContainer = document.createElement("div")
@@ -71,6 +72,7 @@ function poblarlistaJuegos() {
     actualizarBtnsAgregar()
 }
 
+// ASIGNANDO LA FUNCIÓN PARA AGREGAR PRODUCTOS AL CARRITO
 function actualizarBtnsAgregar() {
     btnsAgregar = document.querySelectorAll(".articulo-agregar")
     btnsAgregar.forEach(boton => {
@@ -78,6 +80,7 @@ function actualizarBtnsAgregar() {
     })
 }
 
+// FUNCIÓN PARA ACTUALIZAR MI CARRITO
 function actualizarCarrito() {
     estadoBtnVaciar()
     carritoJuegos.innerHTML = ""
@@ -87,11 +90,13 @@ function actualizarCarrito() {
     });
 }
 
+// FUNCIÓN PARA ACTUALIZAR EL CONTADOR DE PRODUCTOS
 function actualizarContador() {
     let numContador = carrito.reduce((acumulador, articulo) => acumulador + articulo.cantidad, 0)
     contador.innerText = numContador
 }
 
+// FUNCIÓN PARA ASIGNAR EL ESTADO DEL BOTÓN VACIAR
 function estadoBtnVaciar() {
     if (carrito.length === 0) {
         btnVaciar.disabled = true;
@@ -100,33 +105,27 @@ function estadoBtnVaciar() {
     }
 }
 
+// FUNCIÓN PARA VACIAR EL CARRITO, JUNTO CON PREAVISO DE SWEET ALERT
 function vaciar() {
-    carrito = []
-    localStorage.setItem("carrito", JSON.stringify(carrito))
-    actualizarCarrito()
-    actualizarContador()
 
-    Toastify({
-        text: "¡Has vaciado el carrito!",
-        duration: 2000,
-        close: false,
-        gravity: "top",
-        position: "center",
-        stopOnFocus: true,
-        style: {
-            background: "linear-gradient(90deg, hsla(260, 28%, 53%, 1) 0%, hsla(170, 42%, 71%, 1) 100%)",
-            borderRadius: "1rem",
-            textTransform: "uppercase",
-            fontSize: ".75rem"
-        },
-        offset: {
-            x: '1.5rem',
-            y: '1.5rem'
-        },
-        onClick: function () { }
-    }).showToast();
+    Swal.fire({
+        title: '¿Segur@?',
+        icon: 'warning',
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText: 'Sí',
+        cancelButtonText: 'No'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            carrito = []
+            localStorage.setItem("carrito", JSON.stringify(carrito))
+            actualizarCarrito()
+            actualizarContador()
+        }
+    })
 }
 
+// FUNCIÓN PARA MOSTRAR LOS PRODUCTOS EN EL CARRITO
 function mostrarAgregarAlCarrito() {
     estadoBtnVaciar()
     carritoJuegos.innerHTML = ""
@@ -144,6 +143,7 @@ function mostrarAgregarAlCarrito() {
     })
 }
 
+// FUNCIÓN PARA CALCULAR EL TOTAL DE PRODUCTOS EN EL CARRITO
 function calcularTotal() {
     let total = 0
     carrito.forEach((articulos) => {
@@ -153,6 +153,7 @@ function calcularTotal() {
     totalCarrito.textContent = total
 }
 
+// CARGANDO EL CARRITO DESDE EL LOCAL STORAGE SEGÚN CONDICIÓN
 let carritoLS = localStorage.getItem("carrito")
 
 if (carritoLS) {
@@ -162,7 +163,7 @@ if (carritoLS) {
     carrito = [];
 }
 
-
+// AGREGANDO PRODUCTOS AL CARRITO
 function agregarAlCarrito(e) {
     Toastify({
         text: "Agregado al carrito",

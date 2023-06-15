@@ -37,17 +37,19 @@
         </div>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">
-                    <img src="img/icon-logo.webp" alt="Logo" width="40" height="34"
-                        class="d-inline-block align-text-top"></a>
-
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                    <a class="navbar-brand" href="index.html">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <img src="img/icon-logo.webp" alt="Logo" width="40" height="34"
+                                class="d-inline-block align-text-top">
+                        </div>
+                    </a>
+                    <ul class="navbar-nav mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
                         </li>
@@ -58,17 +60,8 @@
                             <a class="nav-link active" href="pages/conocenos.html">¡Conócenos!</a>
                         </li>
                     </ul>
-                    <div class="d-flex align-items-center justify-content-end gap-2">
-                        <div class="circle-background">
-                            <a class="" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                                aria-controls="offcanvasRight">
-                                <img id="icon-shoppingcart" class="navbar-icons"
-                                    src="https://i.ibb.co/RgzrWYH/icon-shopping-Cart.webp" alt="icono-carrito"><span
-                                    id="contador" class="cantidad-shop">0</span>
-                            </a>
-                        </div>
-                    </div>
                 </div>
+            </div>
         </nav>
     </header>
 
@@ -120,40 +113,6 @@
         </div>
     </main>
 
-    <!-- START CARRITO DE COMPRAS -OFFCANVAS- -->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasRightLabel">Carrito de compras</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-
-            <table class="table table-dark table-striped">
-                <thead>
-                    <tr>
-                        <th class="table-primary">Cover</th>
-                        <th class="table-primary">Nombre</th>
-                        <th class="table-primary">Plataforma</th>
-                        <th class="table-primary">Precio</th>
-                    </tr>
-                </thead>
-                <tbody id="tJuegos">
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th colspan="3" class="text-total">Total: </th>
-                        <th id="total"></th>
-                    </tr>
-                </tfoot>
-            </table>
-            <div class="btn-vaciar">
-                <button id="btn-vaciar" class="btn-vaciar btn btn-danger">Vaciar carrito</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- END CARRITO DE COMPRAS -OFFCANVAS- -->
-
     <footer>
         <div class="footer-container">
             <div>
@@ -168,8 +127,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
-    <script src="models/Articulos.js"></script>
-    <script src="models/ArticulosCarrito.js"></script>
     <script src="app.js"></script>
 </body>
 
