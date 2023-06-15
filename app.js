@@ -72,7 +72,6 @@ function poblarlistaJuegos() {
 }
 
 function actualizarCarrito() {
-    carritoJuegos.innerHTML = "";
     totalCarrito.innerText = 0;
     if (carrito.length === 0) {
         btnVaciar.setAttribute("disabled", true);
@@ -110,6 +109,7 @@ function vaciar() {
 }
 
 function mostrarAgregarAlCarrito() {
+    carritoJuegos.innerHTML = "";
     carrito.forEach(juego => {
         const fila = document.createElement("tr")
         // const posCarrito = carrito.indexOf(juego)
