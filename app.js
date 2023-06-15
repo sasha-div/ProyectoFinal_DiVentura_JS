@@ -34,10 +34,10 @@ localStorage.setItem("catalogo", JSON.stringify(catalogo))
 allEventListeners()
 
 function allEventListeners() {
+    btnVaciar.addEventListener("click", vaciar)
     window.addEventListener("DOMContentLoaded", cargarJuegos)
     window.addEventListener("DOMContentLoaded", actualizarContador)
     window.addEventListener("DOMContentLoaded", mostrarAgregarAlCarrito)
-    btnVaciar.addEventListener("click", vaciar)
 }
 
 // CARGANDO LOS ARTÍCULOS EN LA PÁGINA
@@ -71,7 +71,15 @@ function poblarlistaJuegos() {
     actualizarBtnsAgregar()
 }
 
+function actualizarBtnsAgregar() {
+    btnsAgregar = document.querySelectorAll(".articulo-agregar")
+    btnsAgregar.forEach(boton => {
+        boton.addEventListener("click", agregarAlCarrito)
+    })
+}
+
 function actualizarCarrito() {
+    carritoJuegos.innerHTML = ""
     totalCarrito.innerText = 0;
     if (carrito.length === 0) {
         btnVaciar.setAttribute("disabled", true);
@@ -79,6 +87,11 @@ function actualizarCarrito() {
     carrito.forEach((juego) => {
         mostrarAgregarAlCarrito(juego);
     });
+}
+
+function actualizarContador() {
+    let numContador = carrito.reduce((acumulador, articulo) => acumulador + articulo.cantidad, 0)
+    contador.innerText = numContador
 }
 
 function vaciar() {
@@ -109,10 +122,9 @@ function vaciar() {
 }
 
 function mostrarAgregarAlCarrito() {
-    carritoJuegos.innerHTML = "";
+    carritoJuegos.innerHTML = ""
     carrito.forEach(juego => {
         const fila = document.createElement("tr")
-        // const posCarrito = carrito.indexOf(juego)
         fila.innerHTML = `
                     <td><img class="imgCover" src="${juego.cover}" alt="${juego.nombre}"></td>
                     <td>${juego.nombre}</td>
@@ -120,15 +132,18 @@ function mostrarAgregarAlCarrito() {
                     <td>${juego.precio}</td>
                     `
         carritoJuegos.append(fila)
+
+        calcularTotal();
     })
-    console.log(carrito)
 }
 
-function actualizarBtnsAgregar() {
-    btnsAgregar = document.querySelectorAll(".articulo-agregar")
-    btnsAgregar.forEach(boton => {
-        boton.addEventListener("click", agregarAlCarrito)
+function calcularTotal() {
+    let total = 0
+    carrito.forEach((articulos) => {
+        total += articulos.precio
     })
+
+    totalCarrito.textContent = total
 }
 
 let carritoLS = localStorage.getItem("carrito")
@@ -140,8 +155,8 @@ if (carritoLS) {
     carrito = [];
 }
 
-function agregarAlCarrito(e) {
 
+function agregarAlCarrito(e) {
     Toastify({
         text: "Agregado al carrito",
         duration: 2000,
@@ -180,7 +195,3 @@ function agregarAlCarrito(e) {
     localStorage.setItem("carrito", JSON.stringify(carrito))
 }
 
-function actualizarContador() {
-    let numContador = carrito.reduce((acumulador, articulo) => acumulador + articulo.cantidad, 0)
-    contador.innerText = numContador
-}
