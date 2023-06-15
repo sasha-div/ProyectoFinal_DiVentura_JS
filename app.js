@@ -34,10 +34,10 @@ localStorage.setItem("catalogo", JSON.stringify(catalogo))
 allEventListeners()
 
 function allEventListeners() {
-    btnVaciar.addEventListener("click", vaciar)
     window.addEventListener("DOMContentLoaded", cargarJuegos)
     window.addEventListener("DOMContentLoaded", actualizarContador)
     window.addEventListener("DOMContentLoaded", mostrarAgregarAlCarrito)
+    btnVaciar.addEventListener("click", vaciar)
 }
 
 // CARGANDO LOS ARTÍCULOS EN LA PÁGINA
@@ -79,19 +79,25 @@ function actualizarBtnsAgregar() {
 }
 
 function actualizarCarrito() {
+    estadoBtnVaciar()
     carritoJuegos.innerHTML = ""
     totalCarrito.innerText = 0;
-    if (carrito.length === 0) {
-        btnVaciar.setAttribute("disabled", true);
-    }
     carrito.forEach((juego) => {
-        mostrarAgregarAlCarrito(juego);
+        mostrarAgregarAlCarrito(juego)
     });
 }
 
 function actualizarContador() {
     let numContador = carrito.reduce((acumulador, articulo) => acumulador + articulo.cantidad, 0)
     contador.innerText = numContador
+}
+
+function estadoBtnVaciar() {
+    if (carrito.length === 0) {
+        btnVaciar.disabled = true;
+    } else {
+        btnVaciar.disabled = false;
+    }
 }
 
 function vaciar() {
@@ -122,6 +128,7 @@ function vaciar() {
 }
 
 function mostrarAgregarAlCarrito() {
+    estadoBtnVaciar()
     carritoJuegos.innerHTML = ""
     carrito.forEach(juego => {
         const fila = document.createElement("tr")
