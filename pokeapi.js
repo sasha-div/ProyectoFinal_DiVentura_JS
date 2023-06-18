@@ -14,10 +14,10 @@ function pokeMostrar(pokeData) {
     pokeTipos = pokeTipos.join("")
 
     const div = document.createElement("div")
-    div.classList.add("row,g-0")
+    div.classList.add("row")
     div.innerHTML = `
                     <div class="col-md-4">
-                        <img src="${pokeData.sprites.other["official-artwork"].front_default}" class="img-fluid rounded-start" alt="imagen - ${pokeData.name}">
+                        <img src="${pokeData.sprites.other["official-artwork"].front_default}" class="pt-5 img-fluid rounded-start" alt="imagen - ${pokeData.name}">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
